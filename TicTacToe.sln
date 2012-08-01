@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{8CC4FE84-6EA2-484F-84F1-84A4A365FD2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{698E267B-03E5-426D-A35F-3405A3FCEA35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{1E2EE894-855F-4EA1-953F-6A0F3767B687}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Logic", "TicTacToe.Logic\TicTacToe.Logic.csproj", "{DF864BBF-F891-4C55-AD55-D975A451B02E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Logic.UnitTests", "TicTacToe.Logic.UnitTests\TicTacToe.Logic.UnitTests.csproj", "{DA565D1C-74EC-4218-B7FE-0266A61E0671}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Model", "TicTacToe.Model\TicTacToe.Model.csproj", "{2CD6D0B6-D051-4DAC-A807-65F63FF9797B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{5978B7AF-4AEF-4FD0-8F10-9D375B2AC865}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.WinForms", "TicTacToe.WinForms\TicTacToe.WinForms.csproj", "{921379C1-0E8D-4045-B5D0-AEC74320E92C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CD6D0B6-D051-4DAC-A807-65F63FF9797B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CD6D0B6-D051-4DAC-A807-65F63FF9797B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CD6D0B6-D051-4DAC-A807-65F63FF9797B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CD6D0B6-D051-4DAC-A807-65F63FF9797B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{921379C1-0E8D-4045-B5D0-AEC74320E92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{921379C1-0E8D-4045-B5D0-AEC74320E92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{921379C1-0E8D-4045-B5D0-AEC74320E92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{921379C1-0E8D-4045-B5D0-AEC74320E92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA565D1C-74EC-4218-B7FE-0266A61E0671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA565D1C-74EC-4218-B7FE-0266A61E0671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA565D1C-74EC-4218-B7FE-0266A61E0671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA565D1C-74EC-4218-B7FE-0266A61E0671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF864BBF-F891-4C55-AD55-D975A451B02E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF864BBF-F891-4C55-AD55-D975A451B02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF864BBF-F891-4C55-AD55-D975A451B02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF864BBF-F891-4C55-AD55-D975A451B02E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CD6D0B6-D051-4DAC-A807-65F63FF9797B} = {8CC4FE84-6EA2-484F-84F1-84A4A365FD2B}
+		{921379C1-0E8D-4045-B5D0-AEC74320E92C} = {5978B7AF-4AEF-4FD0-8F10-9D375B2AC865}
+		{DA565D1C-74EC-4218-B7FE-0266A61E0671} = {1E2EE894-855F-4EA1-953F-6A0F3767B687}
+		{DF864BBF-F891-4C55-AD55-D975A451B02E} = {698E267B-03E5-426D-A35F-3405A3FCEA35}
+	EndGlobalSection
+EndGlobal
