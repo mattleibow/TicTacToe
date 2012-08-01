@@ -11,16 +11,9 @@ namespace TicTacToe.Logic
         /// </summary>
         public static bool GetWinningMove(bool playerPiece, int minResults, BrainResult result, Board board)
         {
-            if (GetStraightWinningMove(playerPiece, minResults, result, board)
-                || GetDiagonalWinningMove(playerPiece, result, board))
-            {
-                if (result.Moves.Count >= minResults)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return (GetStraightWinningMove(playerPiece, minResults, result, board) // staight win
+                    || GetDiagonalWinningMove(playerPiece, result, board)) // diagonal win
+                   && result.Moves.Count >= minResults; // are moves
         }
 
         public static bool GetStraightWinningMove(bool playerPiece, int minResults, BrainResult result, Board board)
@@ -147,6 +140,22 @@ namespace TicTacToe.Logic
 
         #region 3. & 4. Forking Moves
 
+        /// <summary>
+        /// Find the places that will force the other player to defend, put his
+        /// piece in a place that is not going to create a fork.
+        /// </summary>
+        /// <param name="playerPiece">
+        /// Flag for representing the diferent players.
+        /// </param>
+        /// <param name="result">
+        /// The result set for storing the values.
+        /// </param>
+        /// <param name="board">
+        /// The board to use.
+        /// </param>
+        /// <returns>
+        /// True if at least 1 possible wins was found.
+        /// </returns>
         public static bool GetBlockForkingMove(bool playerPiece, BrainResult result, Board board)
         {
             // can the other player create a fork?
@@ -181,6 +190,21 @@ namespace TicTacToe.Logic
         /// <summary>
         /// Fork by creating an opportunity where you can win in two ways.
         /// </summary>
+        /// <param name="playerPiece">
+        /// Flag for representing the diferent players.
+        /// </param>
+        /// <param name="result">
+        /// The result set for storing the values.
+        /// </param>
+        /// <param name="board">
+        /// The board to use.
+        /// </param>
+        /// <param name="getAllForks">
+        /// Are we to get all the forks or stop after the first one is found.
+        /// </param>
+        /// <returns>
+        /// True if at least 1 possible forking move was found.
+        /// </returns>
         public static bool GetForkingMove(bool playerPiece, BrainResult result, Board board, bool getAllForks = false)
         {
             var tempBoard = board.Clone();
@@ -189,23 +213,33 @@ namespace TicTacToe.Logic
             {
                 if (tempBoard.BoardArray[i] == 0)
                 {
-                    tempBoard.BoardArray[i] = playerPiece ? 1 : -1;
+                    var piece = playerPiece ? 1 : -1;
+
+                    tempBoard.BoardArray[i] = piece;
 
                     var outerResult = new BrainResult();
                     if (GetWinningMove(playerPiece, 2, outerResult, tempBoard))
                     {
-                        var moveThatMakesTwoInARow = board.GetMove(i);
+                        var m = board.GetMove(i);
                         var innerResult = new BrainResult();
                         var notWin = !GetWinningMove(!playerPiece, 1, innerResult, tempBoard);
-                        var notFork = !GetOppositionForkingMove(playerPiece, tempBoard, moveThatMakesTwoInARow);
+
+                        // switch last to the other player
+                        var index = board.GetIndex(m.X, m.Y);
+                        tempBoard.BoardArray[index] = piece * -1;
+
+                        var notFork = !GetOppositionForkingMove(playerPiece, tempBoard);
                         if (notWin && notFork)
                         {
-                            result.Moves.Add(moveThatMakesTwoInARow);
+                            result.Moves.Add(m);
                             if (!getAllForks)
                             {
                                 return true;
                             }
                         }
+
+                        // switch back
+                        tempBoard.BoardArray[index] = piece;
                     }
 
                     tempBoard.BoardArray[i] = 0;
@@ -215,12 +249,21 @@ namespace TicTacToe.Logic
             return getAllForks && result.Moves.Count > 0;
         }
 
-        public static bool GetOppositionForkingMove(bool playerPiece, Board board, Move move)
+        /// <summary>
+        /// Using the given board, see if the other play can make any forks.
+        /// </summary>
+        /// <param name="playerPiece">
+        /// Flag for representing the diferent players.
+        /// </param>
+        /// <param name="board">
+        /// The board to use.
+        /// </param>
+        /// <returns>
+        /// True if at least 1 possible wins was found.
+        /// </returns>
+        public static bool GetOppositionForkingMove(bool playerPiece, Board board)
         {
             var tempBoard = board.Clone();
-
-            // switch last to the correct player
-            tempBoard.BoardArray[board.GetIndex(move.X, move.Y)] = playerPiece ? -1 : 1;
 
             for (int i = 0; i < board.BoardSize; i++)
             {
