@@ -161,7 +161,7 @@ namespace TicTacToe.Logic.UnitTests
             {
                 var g = new CurrentGame(new Board(boards[i], sizes[i][0], sizes[i][1]));
                 var brainResult = new BrainResult();
-                var canMove = g.GetDiagonalWinningMove(true, brainResult);
+                var canMove = GameBrain.GetDiagonalWinningMove(true, brainResult, g.Board);
 
                 try
                 {

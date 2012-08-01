@@ -69,7 +69,7 @@ namespace TicTacToe.Logic.UnitTests
                 var g = new CurrentGame(new Board(board, sizes[i][0], sizes[i][1]));
 
                 var brainResult = new BrainResult();
-                var canMove = g.GetStraightWinningMove(false, false, 1, brainResult);
+                var canMove = GameBrain.GetStraightWinningMove(false, false, 1, brainResult, g.Board);
 
                 try
                 {
@@ -156,7 +156,7 @@ namespace TicTacToe.Logic.UnitTests
                 var g = new CurrentGame(new Board(boards[i], sizes[i][0], sizes[i][1]));
 
                 var brainResult = new BrainResult();
-                var canMove = g.GetStraightWinningMove(true, true, 1, brainResult);
+                var canMove = GameBrain.GetStraightWinningMove(true, true, 1, brainResult, g.Board);
 
                 try
                 {
@@ -225,7 +225,7 @@ namespace TicTacToe.Logic.UnitTests
             {
                 var g = new CurrentGame(new Board(boards[i], sizes[i][0], sizes[i][1]));
                 var brainResult = new BrainResult();
-                var canMove = g.GetDiagonalWinningMove(true, brainResult);
+                var canMove = GameBrain.GetDiagonalWinningMove(true, brainResult, g.Board);
 
                 try
                 {

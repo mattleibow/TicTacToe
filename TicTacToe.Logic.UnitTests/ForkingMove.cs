@@ -28,10 +28,8 @@ namespace TicTacToe.Logic.UnitTests
             {
                 var board = boards[i];
 
-                var g = new CurrentGame(new Board(board));
-
                 var brainResult = new BrainResult();
-                var canMove = g.GetForkingMove(false, brainResult);
+                var canMove = GameBrain.GetForkingMove(false, brainResult, new Board(board));
 
                 try
                 {
@@ -69,10 +67,8 @@ namespace TicTacToe.Logic.UnitTests
             {
                 var board = boards[i];
 
-                var g = new CurrentGame(new Board(board));
-
                 var brainResult = new BrainResult();
-                var canMove = g.GetBlockForkingMove(false, brainResult);
+                var canMove = GameBrain.GetBlockForkingMove(false, brainResult, new Board(board));
 
                 try
                 {
@@ -116,10 +112,8 @@ namespace TicTacToe.Logic.UnitTests
             {
                 var board = boards[i];
 
-                var g = new CurrentGame(new Board(board));
-
                 var brainResult = new BrainResult();
-                var canMove = g.GetForkingMove(true, brainResult);
+                var canMove = GameBrain.GetForkingMove(true, brainResult, new Board(board));
 
                 try
                 {

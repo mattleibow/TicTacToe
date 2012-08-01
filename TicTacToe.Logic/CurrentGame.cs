@@ -56,26 +56,6 @@ namespace TicTacToe.Logic
                    || GameBrain.GetEmptySideMove(result, this.Board); // <------------ 8. Play in a middle square on any of the 4 sides.
         }
 
-        public bool GetDiagonalWinningMove(bool playerPiece, BrainResult result)
-        {
-            return GameBrain.GetDiagonalWinningMove(playerPiece, result, this.Board);
-        }
-
-        public bool GetForkingMove(bool playerPiece, BrainResult result, bool getAllForks = false)
-        {
-            return GameBrain.GetForkingMove(playerPiece, result, this.Board, getAllForks);
-        }
-
-        public bool GetBlockForkingMove(bool playerPiece, BrainResult result)
-        {
-            return GameBrain.GetBlockForkingMove(playerPiece, result, this.Board);
-        }
-
-        public bool GetStraightWinningMove(bool vert, bool playerPiece, int minResults, BrainResult result)
-        {
-            return GameBrain.GetStraightWinningMove(vert, playerPiece, minResults, result, this.Board);
-        }
-
         public bool CheckForWin(BrainResult result)
         {
             return GameBrain.CheckForWin(false, result, this.Board)

@@ -176,7 +176,7 @@ namespace TicTacToe.Logic
         }
 
         #endregion
-
+        
         #region Find moves that could result in a win
 
         /// <summary>
@@ -208,6 +208,30 @@ namespace TicTacToe.Logic
                    || GetDiagonalWinningMove(true, playerPiece, result, board); // top right to bottom left
         }
 
+        /// <summary>
+        /// Find a place where, if the current player place his piece there, 
+        /// will result in a win for that player.
+        /// </summary>
+        /// <param name="vert">
+        /// True if we are searching vertically, otherwise False if we are 
+        /// searching horizontaly.
+        /// </param>
+        /// <param name="playerPiece">
+        /// Flag for representing the diferent players.
+        /// </param>
+        /// <param name="minResults">
+        /// The number of wins that need to be found before returning.
+        /// </param>
+        /// <param name="result">
+        /// The result set for storing the values.
+        /// </param>
+        /// <param name="board">
+        /// The board to use.
+        /// </param>
+        /// <returns>
+        /// True if at least <paramref name="minResults"/> possible wins were 
+        /// found.
+        /// </returns>
         public static bool GetStraightWinningMove(bool vert, bool playerPiece, int minResults, BrainResult result, Board board)
         {
             int outMax = vert ? board.BoardWidth : board.BoardSize;
